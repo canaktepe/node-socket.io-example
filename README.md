@@ -1,7 +1,7 @@
 # node-socket.io-example
 nodejs rest api and socket.io
 
-# install node modules
+# node modules installation
 npm install
 
 # run app
