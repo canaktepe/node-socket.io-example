@@ -1,14 +1,5 @@
 var Products = [];
 
-function renderProducts(products) {
-    $('#products').html('');
-    if (products.length === 0) return;
-    $.each(products, function (id, product) {
-        $('#products').append('<p><span>' + product.id + '</span><span>' + product.name + '</span><button onclick="removeProduct(' + product.id + ')">Delete</button></p>')
-    })
-    $('#products').show();
-}
-
 function removeProduct(id) {
     var product = Products.filter((p) => {
         return p.id === id;
@@ -22,8 +13,7 @@ function removeProduct(id) {
         dataType: 'json',
         contentType: 'application/json',
         complete: function (context, jqXHR, textStatus) {
-            if (context.status != 200)
-                console.log(context.status);
+            if (context.status != 200) console.log(context.status);
         }
     })
 }
@@ -36,9 +26,8 @@ function loadProducts() {
         method: 'GET',
         dataType: 'json',
         success: function (data) {
-            if (data.length > 0) {
-                productViewModel.products(data)
-            }
+            if (data.length > 0) productViewModel.products(data)
+
         },
         error: function (err) {
 
@@ -62,8 +51,7 @@ function ProductViewModel() {
             data: JSON.stringify(data),
             dataType: 'json',
             complete: function (context, jqXHR, textStatus) {
-                if (context.status === 200)
-                    $('#txtName').val('').focus();
+                if (context.status === 200) $('#txtName').val('').focus();
                 else console.log(context);
             },
         })
@@ -77,8 +65,7 @@ function ProductViewModel() {
             dataType: 'json',
             contentType: 'application/json',
             complete: function (context, jqXHR, textStatus) {
-                if (context.status != 200)
-                    console.log(context.status);
+                if (context.status != 200) console.log(context.status);
             }
         })
     }
@@ -97,7 +84,7 @@ $(document).ready(function () {
     })
 
     socket.on('deleted product', function (data) {
-        productViewModel.products.remove(function(item){
+        productViewModel.products.remove(function (item) {
             return item.id === data.id;
         });
     })
