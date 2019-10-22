@@ -9,6 +9,8 @@ require('./public/scripts/utils');
 app.use('/static', express.static(path.join(__dirname, 'public')))
 app.use('/static', express.static(path.join(__dirname, 'node_modules')))
 
+app.use('/build', express.static(path.join(__dirname, 'dist')))
+
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/index.html'))
 })
