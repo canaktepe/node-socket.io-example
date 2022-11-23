@@ -19,6 +19,6 @@
     "grunt-contrib-uglify-es": "github:gruntjs/grunt-contrib-uglify#harmony",
     "jquery": "^3.4.1",
     "knockout": "^3.5.0",
-    "socket.io": "^2.3.0"
+    "socket.io": "^2.5.0"
   }
 }
